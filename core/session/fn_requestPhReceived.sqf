@@ -9,6 +9,7 @@
 	set the client up.
 */
 //Error handling and  junk..
+
 if(isNil "_this") exitWith {diag_log format["LINE 15"];};
 if(typeName _this == "STRING") exitWith {diag_log format["LINE 16"];};
 if(count _this == 0) exitWith {diag_log format["LINE 17"];};

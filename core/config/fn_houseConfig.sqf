@@ -28,6 +28,7 @@ switch (true) do {
 	case (_house in ["Land_mbg_ger_pub_1","Land_mbg_ger_pub_2"]): {[6500000,4]};
 	case (_house in ["Land_e76_us_house02a","Land_e76_us_house01","Land_e76_us_house01a","Land_e76_us_house01a","Land_e76_us_house01b"]): {[1350000,4]};
 	case (_house in ["Land_A_Villa_EP1"]): {[8000000,6]};
+	case (_house in ["Land_Jbad_A_Villa"]): {[10000000,6]};
 	case (_house in ["Land_Stone_Gate_F"]): {[50000,0]};
 	default {[]};
 };

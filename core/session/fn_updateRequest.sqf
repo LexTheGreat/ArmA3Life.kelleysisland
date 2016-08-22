@@ -24,9 +24,12 @@ switch (playerSide) do {
 
 [_packet,"DB_fnc_updateRequest",false,false] spawn life_fnc_MP;
 
+/*
+TODO: Cellphone and exp sync
 
 _packet2 = [getPlayerUID player,(profileName),playerSide,mobilesettings,batterylevel,contacts_list];
 [_packet2,"DB_fnc_updatePhRequest",false,false] spawn life_fnc_MP;
 
 _packet3 = [getPlayerUID player,(profileName),playerSide,exp_mining,exp_farming];
 [_packet3,"DB_fnc_updateExpRequest",false,false] spawn life_fnc_MP;
+*/

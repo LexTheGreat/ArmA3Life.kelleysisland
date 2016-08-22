@@ -1,5 +1,0 @@
-///////<HEADER>///////
-prefix=ArmA3Life.LakesideValley
-Pbo Type is: Arma Mission with irrelevant prefix
-Sha: '9FA2F3B9AA2588693921A2A5160E6C4E77B14D96'
-//////</HEADER>//////

@@ -16,17 +16,22 @@ if(life_session_tries > 3) exitWith {cutText[localize "STR_Session_Error","BLACK
 0 cutFadeOut 9999999;
 
 //Error handling and  junk..
+diag_log format["%1", _this];
 if(isNil "_this") exitWith {[] call SOCK_fnc_insertPlayerInfo;};
 if(typeName _this == "STRING") exitWith {[] call SOCK_fnc_insertPlayerInfo;};
 if(count _this == 0) exitWith {[] call SOCK_fnc_insertPlayerInfo;};
-if((_this select 0) == "Error") exitWith {[] call SOCK_fnc_insertPlayerInfo;};
+if(format["%1", _this select 0] == "Error") exitWith {[] call SOCK_fnc_insertPlayerInfo;};
 if((getPlayerUID player) != _this select 0) exitWith {[] call SOCK_fnc_dataQuery;};
 
 //Parse basic player information.
 life_cash = parseNumber (_this select 2);
 life_atmcash = parseNumber (_this select 3);
-__CONST__(life_adminlevel,parseNumber(_this select 4));
-__CONST__(life_donator,parseNumber(_this select 5));
+
+_temp = _this select 4;
+__CONST__(life_adminlevel,_temp);
+_temp = _this select 5;
+__CONST__(life_donator,_temp);
+_temp = null;
 
 //Loop through licenses
 if(count (_this select 6) > 0) then {
@@ -42,9 +47,9 @@ life_gear = _this select 8;
 switch(playerSide) do {
 	case west: {
 		// TODO Fix doj level in database
-		__CONST__(life_coplevel, parseNumber(_this select 7));
+		__CONST__(life_coplevel, _this select 7);
 		__CONST__(life_medicLevel,0);
-		__CONST__(life_dojlevel, parseNumber(_this select 7));
+		__CONST__(life_dojlevel, _this select 7);
 		life_blacklisted = _this select 9;
 		__CONST__(a3l_customcolor,(_this select 10));
 	};
@@ -55,17 +60,17 @@ switch(playerSide) do {
 		life_is_arrested = _this select 7;
 		life_arrestMinutes = _this select 9;
 		life_arrestReason = _this select 10;
-		__CONST__(a3l_customcolor,(_this select 11));
+		//__CONST__(a3l_customcolor,(_this select 11));
 		
 		__CONST__(life_coplevel, 0);
 		__CONST__(life_medicLevel, 0);
-		life_houses = _this select 13;
+		life_houses = _this select 11;
 		{
 			_house = nearestBuilding (call compile format["%1", _x select 0]);
 			life_vehicles set[count life_vehicles,_house];
 		} foreach life_houses;
 		
-		life_gangData = _This select 14;
+		life_gangData = _This select 12;
 		if(count life_gangData != 0) then {
 			[] spawn life_fnc_initGang;
 		};
@@ -74,7 +79,7 @@ switch(playerSide) do {
 	
 	
 	case independent: {
-		__CONST__(life_medicLevel, parseNumber(_this select 7));
+		__CONST__(life_medicLevel, _this select 7);
 		__CONST__(life_copLevel,0);
 		__CONST__(life_dojlevel, 0);
 		__CONST__(a3l_customcolor,(_this select 9));

@@ -4,14 +4,18 @@ tf_west_radio_code = "";
 tf_east_radio_code = tf_west_radio_code;
 tf_guer_radio_code = tf_west_radio_code;
 tf_civ_radio_code = tf_west_radio_code;
+bank = nearestObject [[8583,6608],"Land_CommonwealthBank"];
+
+mafGate = ([3689.08,4854.12,0.00143909] nearestObject "Land_Gate_C");
+mafGate animate ["GateDoor_3", -8]; mafGate animate ["GateDoor_4",8];
 
 // Server SetVariables
 if (isServer) then {
 	bank setvariable ["robbed",false,true];
-	stash1 setvariable ["robbed",false,true];
-	stash2 setvariable ["robbed",false,true];
-	stash3 setvariable ["robbed",false,true];
-	stash4 setvariable ["robbed",false,true];
+	//stash1 setvariable ["robbed",false,true];
+	//stash2 setvariable ["robbed",false,true];
+	//stash3 setvariable ["robbed",false,true];
+	//stash4 setvariable ["robbed",false,true];
 };
 
 // Different depending on server
